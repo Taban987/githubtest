@@ -1,0 +1,125 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+<!--<record model="ir.ui.view" id="car_showroom_tree">-->
+<!--            <field name="name">Car.showroom.tree</field>-->
+<!--            <field name="model">car.data</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="manufacturer"/>-->
+<!--                    <field name="model"/>-->
+<!--                    <field name="number_plate"/>-->
+<!--                    <field name="color"/>-->
+<!--                    <field name="price"/>-->
+
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record model="ir.ui.view" id="car_showroom_list">
+            <field name="name">Car_Showroom list</field>
+            <field name="model">car.data</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="manufacturer"/>
+                    <field name="model"/>
+                    <field name="number_plate"/>
+                    <field name="color"/>
+                    <field name="price"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="car_detailsid1" model="ir.ui.view">
+            <field name="name">form.view.car</field>
+            <field name="model">car.data</field>
+            <field name="arch" type="xml">
+                <form>
+                  <sheet>
+                    <group>
+                      <group>
+                        <field name="name"></field>
+                       <field name="manufacturer"></field>
+                       <field name="model"></field>
+                      </group>
+                      <group>
+                        <field name="number_plate"></field>
+                       <field name="color"></field>
+                       <field name="price"></field>
+                      </group>
+
+
+                    </group>
+                  </sheet>
+
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                        </group>-->
+<!--                    </group>-->
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="id1">
+            <field name="name">View Cars Details Here</field>
+            <field name="res_model">car.data</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+        <record model="ir.actions.act_window" id="id2">
+            <field name="name">View Customer Details Here</field>
+            <field name="res_model">car.data</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="car__showroom.action_server">
+              <field name="name">Car_Showroom server</field>
+              <field name="model_id" ref="model_car__showroom_car__showroom"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+
+        <menuitem name="Vehical Details " id="parent_menu"/>
+        <!-- menu categories -->
+
+        <menuitem name="Car Information" id="car_info" parent="parent_menu"
+                  action="id1"/>
+
+        <menuitem name="Customer Information" id="cus_info" parent="parent_menu"
+                  action="id2"/>
+<!--        ingeritance wala menu-->
+      <menuitem id="res_partner_menu_contacts"
+        name="Contacts"
+        action="contacts.action_contacts"
+        parent="parent_menu"
+        sequence="2"/>
+
+
+        <!--    <menuitem name="Customer Information" id="customer_info" parent="parent_menu"-->
+        <!--     action="car_info.action_server"/>/>-->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="car__showroom.menu_1_list" parent="car__showroom.menu_1"
+                      action="car__showroom.action_window"/>
+            <menuitem name="Server to list" id="car__showroom" parent="car__showroom.menu_2"
+                      action="car__showroom.action_server"/>
+        -->
+    </data>
+</odoo>

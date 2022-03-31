@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="Car_show">
+      <field name="name">MyModule list</field>
+      <field name="model">employee.data</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="id"/>
+          <field name="phone"/>
+           <field name="start_date"/>
+           <field name="end_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="employee_action_window">
+      <field name="name">MyModule window</field>
+      <field name="res_model">employee.data</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--<record model="ir.actions.server" id="my_module.action_server">
+      <field name="name">MyModule server</field>
+      <field name="model_id" ref="model_my_module_my_module"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+    <!-- Top menu item -->
+
+    <menuitem name="Employ " id="employee_menu_item"/>
+    <!-- menu categories -->
+
+
+    <menuitem name="" id="menu_1" parent="employee_menu_item"
+              action="employee_action_window"/>
+    <menuitem name =""
+  </data>
+</odoo>
